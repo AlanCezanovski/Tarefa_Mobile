@@ -1,0 +1,296 @@
+Tela 1
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: Text("Contacts"),
+        ),
+        body: ListView(
+          children: [
+            Task('Romain Hoog'),
+            Task('Emilie Olsen'),
+            Task('Téo Levfte'),
+            Task('Nicole Cruz'),
+            Task('Ranna Peixoro'),
+            Task('José Ortiz'),
+            Task('Romain Algan'),
+            Task('Emilie Pharma'),
+            Task('Téo Levfte'),
+            Task('Nicole Cruz'),
+            Task('Ranna Jackson'),
+            Task('José Paulo'),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Task extends StatefulWidget {
+  final String nome;
+
+  Task(this.nome,{super.key});
+
+  @override
+  State<Task> createState() => _TaskState();
+}
+
+class _TaskState extends State<Task> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(0.0),
+        child: Stack(
+          alignment: AlignmentDirectional.centerStart,
+          children: [
+            Column(
+              children: [
+                Container(
+                  color: Colors.white70,
+                  height: 100,
+
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Stack(
+                          alignment: AlignmentDirectional.center,
+                          children: [
+                        Container(
+                            width: 70,
+                            height: 70,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50)
+                              ,
+                              color: Colors.blue,
+                            ),
+
+  
+                            ),
+                          Text(
+  widget.nome.isNotEmpty ? widget.nome.substring(0, 1) : "",
+  style: TextStyle(
+    fontSize: 30,
+    overflow: TextOverflow.ellipsis,
+    color: Colors.white
+  ), 
+                            
+)
+
+                            
+                          
+                          ]),
+                        Container(
+                            width: 200,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  widget.nome,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      overflow: TextOverflow.ellipsis),
+                                ),
+                                Text(
+  ((widget.nome.replaceAll(' ', '.')).toLowerCase()) + '@example.com',
+  style: TextStyle(
+    fontSize: 10,
+    overflow: TextOverflow.ellipsis,
+  ),
+),
+
+                              ],
+                            )),
+
+
+                        Container(
+                          width: 90,
+                          height: 90,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+          ],
+        ),
+     
+    );
+  }
+}
+
+
+-------------------------------------------------
+
+Tela 2
+
+Tarefa 2
+Alan Lourenço
+​+3 outros
+​
+​
+​
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ExampleScreen(),
+    );
+  }
+}
+
+class ExampleScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Example", style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.blue,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.arrow_downward, color: Colors.white,),
+            onPressed: () {
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.arrow_upward, color: Colors.white,),
+            onPressed: () {
+            },
+          ),
+        ],
+      ),
+      body: ListView.builder(
+        itemCount: 8,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text('Item #$index'),
+            subtitle: Text('Subtitle $index'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+---------------------------------------------------------------
+
+
+
+Tela 3
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: const Text(
+            "Transferências",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+        body: Container(
+          color: Colors.black12,
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                CardItem(icone: Icons.monetization_on, title: '450000.0', text: "456",),
+                SizedBox(height: 5),
+                CardItem(icone: Icons.monetization_on, title: '8001.0', text: "1234",),
+                SizedBox(height: 5),
+                CardItem(icone: Icons.monetization_on, title: '999998.0', text: "1111",),
+              ],
+            )
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            return;
+          },
+          backgroundColor: Colors.blue,
+          shape: const CircleBorder(),
+          child: const Icon(Icons.add),
+        ),
+      ),
+    );
+  }
+}
+
+class CardItem extends StatefulWidget {
+  const CardItem({super.key, required this.icone, required this.title, required this.text});
+  final String text;
+  final String title;
+  final IconData icone;
+  @override
+  State<CardItem> createState() => _CardItemState();
+}
+
+class _CardItemState extends State<CardItem> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      color: Colors.white,
+      alignment: AlignmentDirectional.center,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Icon(widget.icone),
+          const SizedBox(width: 20,),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(widget.title, style: const TextStyle(fontWeight: FontWeight.bold),),
+              Text(widget.text),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
